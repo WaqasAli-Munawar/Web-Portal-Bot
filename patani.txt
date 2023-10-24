@@ -1,0 +1,11 @@
+
+# Set up OpenAI API credentials
+openai.api_key = 'xxxxx'
+
+ completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "user", "content": message}
+    ] , 
+    max_tokens = 20
+    )

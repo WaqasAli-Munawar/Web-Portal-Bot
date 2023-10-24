@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+</head>
+<style>
+.avatargif {
+    display: none;
+}
+</style>
+<body>
+    <h1>Text to Speech</h1>
+    <form action="/generate_voice" method="post" onsubmit="showChatterpalGif()">
+        <label for=""><b>User Input</b></label><br>
+        <input type="text" name="text" id="text" required><br>
+
+        <label for=""><b>Generated Response</b></label><br>
+        <input type="text" name="response" id="response" value="Hi! This is Hassan. I'm not available right now. I will contact you soon.">
+        <input type="submit" value="Generate Voice">
+    </form>
+    {% if success %}
+        <p>Speech generated successfully!</p>
+    {% endif %}
+    <img class="chatterpalgif" style="position: fixed;  bottom: 0%; right: 25%;"  src="{{ url_for('static', filename='images/chatterpal-unscreen.gif') }}" alt="">
+    <img class="chatterpalimg" style="position: fixed;  bottom: 0%; right: 25%;"  src="{{ url_for('static', filename='images/chatterpal.png') }}" alt="">
+
+    <script>
+        function showChatterpalGif() {
+            // Hide the chatterpalimg
+            document.querySelector(".chatterpalimg").style.display = "none";
+            // Show the chatterpalgif
+            document.querySelector(".chatterpalgif").style.display = "block";
+            return true; // Allow the form submission to continue
+        }
+    </script>
+</body>
+</html>
